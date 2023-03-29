@@ -1,0 +1,10 @@
+
+/* ensure all page elements use box-sizing:border-box; */
+html{
+  font-size: 1em; 
+
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}

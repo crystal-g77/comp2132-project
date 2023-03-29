@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<!--
+author:	Crystal Giesbrecht
+date:	03/27/2023
+notes:	an html page for final project
+-->
+    <head>
+        <title>Final Project | COMP 2132</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link href="https://fonts.googleapis.com/css2?family=DM+Mono&amp;family=Bree+Serif&amp;family=Roboto&amp;display=swap" rel="stylesheet">
+
+        <link rel="stylesheet" href="css/style.css">
+
+		<script src="https://code.jquery.com/jquery-3.6.4.min.js" defer="defer"></script>
+        <script src="js/word.js" defer="defer"></script>
+        <script src="js/main-script.js" defer="defer"></script>
+    </head>
+    <body>
+        <div id="wrapper">
+            <header>
+                <h1>Crystal's Final Project</h1>
+            </header>
+            <main>
+                <aside id="popup">
+                    <p id="popup-message"></p>
+                    <button id="play-again">Play Again</button>
+                </aside>
+                <section>
+                    <h2>Hang Man</h2>
+                    <p>Guess a letter from the mystery word. You only have a limited number of guesses to guess the entire word.</p>
+                    <div id="display">
+                        <div id="word"></div>
+                        <div id="hint">
+                            <span id="hint-message"></span>
+                        </div>
+                        <div id="guesses">
+                            <span id="guesses-tally"></span>
+                        </div>
+                        <div id="buttons">
+                            <button id="new-game" class="tooltip-anchor">
+                                <span id="new-game-tooltip" class="tooltip">Click to reset the current game.</span>
+                                New Game
+                            </button>
+                        </div>
+                    </div>
+                    <div id="keyboard">
+                    </div>
+                </section>
+            </main>
+            <footer>
+                <h3>COMP 2132</h3>
+            </footer>            
+        </div>
+    </body>
+</html>

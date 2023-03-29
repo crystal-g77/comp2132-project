@@ -1,0 +1,23 @@
+@charset "utf-8";
+/*
+author:	Crystal Giesbrecht
+date:	03/08/2023
+notes:	base sass scss
+*/
+
+//import variable values
+@import "variables.scss";
+
+//import your mixins  
+@import "mixins.scss";
+
+//import resets
+@import "normalize.scss";
+@import "reset.scss";
+@import "box_reset.scss";
+
+//import content
+@import "page_content.scss";
+
+//import wide screen media query styles
+@import "widescreen_layout.scss";

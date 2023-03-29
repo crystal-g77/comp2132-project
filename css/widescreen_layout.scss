@@ -1,0 +1,20 @@
+
+
+@media (min-width: 500px){
+    #keyboard{
+        grid-template-columns: repeat(10, 1fr);
+    }
+}
+
+@media (min-width: 800px){
+    #keyboard{
+        grid-template-columns: repeat(13, 1fr);
+    }
+}
+
+@media (min-width: 900px){
+	#wrapper{
+		/* center content in wide viewport */
+		margin: auto;
+	}
+}

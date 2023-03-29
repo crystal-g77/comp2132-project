@@ -1,0 +1,260 @@
+
+
+body{
+    background-color: var(--secondary-colour);
+	color: var(--main-colour);
+	font-family: var(--body-font-family), sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: var(--heading-font-family), serif;
+}
+h1{
+    margin: 0px;
+
+    font-weight: bold;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    background-color: transparent; 
+    outline: none;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 22px;
+}
+a:link, a:visited{
+    border-bottom: solid 2px var(--secondary-colour);
+
+    color: var(--secondary-colour);
+}
+a:hover, a:focus, a:active{
+    color: var(--light-colour-1);
+}
+
+p{
+    margin: 5px 0px;
+}
+
+ol, ul{
+    margin: 5px 0px;
+    padding-left: 20px;
+}
+ul{
+
+    list-style-type: disc;
+}
+ol{
+    list-style-type: upper-alpha;
+}
+
+header, footer{
+	min-height: 20px;
+    padding: 10px;
+
+    background-color: var(--light-colour-2);
+    color: var(--light-colour-1);
+    
+    display: flex;
+}
+header{
+    align-items: center;
+}
+footer{
+    justify-content: center;
+}
+
+header > h1{
+    padding: 5px;
+}
+
+footer > h3{
+    font-weight: bold;
+}
+
+main{
+    padding: 12px;
+
+    background-color: var(--dark-colour);
+}
+
+section{
+    margin: 7px;
+    padding: 5px;
+    border-radius: 10px;
+
+    background-color: var(--light-colour-1);
+
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+section > h2{
+    margin-bottom: 10px;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+section > h3{
+    margin: 5px 0px;
+}
+
+article, aside{
+    margin: 5px;
+    padding: 5px;
+    border-radius: 10px;
+    border: solid 2px var(--secondary-colour);
+
+    background-color: var(--light-colour-2);
+    color: var(--dark-colour);
+}
+aside{
+    border: solid 2px var(--main-colour);
+}
+
+article > h3, aside > h3{
+    margin-bottom: 10px;
+}
+
+button{
+    min-width: 38px;
+    height: 38px;
+	margin: 0px;
+    padding: 2px 5px;
+    border: solid 2px var(--light-colour-2);
+    border-radius: 10px;
+
+    background-color: var(--dark-colour);
+    color: var(--light-colour-1);
+	font-size: 1.4em;
+	text-align: center;
+    
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+button:hover, button:focus{
+    border: solid 2px var(--secondary-colour);
+
+    outline: none;
+}
+button[class="disabled"]{
+    background-color: var(--disabled-colour);
+
+    cursor: not-allowed;
+}
+
+.good-message{
+    border: solid 2px var(--good-border-colour);
+
+    background-color: var(--good-bg-colour);
+    color: var(--good-border-colour);
+}
+
+.error-message{
+    border: solid 2px var(--error-border-colour);
+
+    background-color: var(--error-bg-colour);
+    color: var(--error-border-colour);
+}
+
+.tooltip-anchor{
+    position: relative;
+}
+
+.tooltip{
+    width: 200px;    
+    margin: 0px;
+    padding: 5px;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    z-index: 100;
+    border-radius: 10px;
+    border: solid 2px var(--secondary-colour);
+    transform:translate(-50%, -100%);
+
+    background-color: var(--dark-colour);
+    color: var(--light-colour-1);
+    font-size: 16px;
+    text-align: left;
+
+    display: none;
+}
+
+.word{
+    padding-left: 0px;
+
+    list-style-type: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.letter{
+    width: 38px;
+    height: 38px;
+    margin: 0px 2px;
+    padding: 10px 0px;
+    border: solid 2px var(--secondary-colour);
+    border-radius: 10px;
+
+    text-align: center;
+}
+
+/* used to control the width and height of our web page */
+#wrapper{
+    min-height: 100vh;
+    min-width: 300px;
+    max-width: 900px;	
+    position: relative;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+#popup{
+    width: 260px;
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#hint, #guesses, #buttons{
+    margin: 5px 0px;
+
+    display: flex;
+    justify-content: center;
+}
+
+#hint-message{
+    padding: 5px;
+    border: solid 2px var(--main-colour);
+    border-radius: 10px;
+}
+
+#guesses-tally{
+    padding: 5px;
+    border: solid 2px var(--error-border-colour);
+    border-radius: 10px;
+}
+
+#keyboard{
+    margin-top: 5px;
+
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-gap: 5px;
+}
