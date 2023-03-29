@@ -1,13 +1,13 @@
 
 
 body{
-    background-color: var(--secondary-colour);
-	color: var(--main-colour);
-	font-family: var(--body-font-family), sans-serif;
+    background-color: $secondary-colour;
+	color: $main-colour;
+	font-family: $body-font-family, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6{
-    font-family: var(--heading-font-family), serif;
+    font-family: $heading-font-family, serif;
 }
 h1{
     margin: 0px;
@@ -28,12 +28,12 @@ a{
     line-height: 22px;
 }
 a:link, a:visited{
-    border-bottom: solid 2px var(--secondary-colour);
+    border-bottom: solid 2px $secondary-colour;
 
-    color: var(--secondary-colour);
+    color: $secondary-colour;
 }
 a:hover, a:focus, a:active{
-    color: var(--light-colour-1);
+    color: $light-colour-1;
 }
 
 p{
@@ -56,8 +56,8 @@ header, footer{
 	min-height: 20px;
     padding: 10px;
 
-    background-color: var(--light-colour-2);
-    color: var(--light-colour-1);
+    background-color: $light-colour-2;
+    color: $light-colour-1;
     
     display: flex;
 }
@@ -79,7 +79,7 @@ footer > h3{
 main{
     padding: 12px;
 
-    background-color: var(--dark-colour);
+    background-color: $dark-colour;
 }
 
 section{
@@ -87,7 +87,7 @@ section{
     padding: 5px;
     border-radius: 10px;
 
-    background-color: var(--light-colour-1);
+    background-color: $light-colour-1;
 
     word-wrap: break-word;
     word-break: break-word;
@@ -107,14 +107,13 @@ section > h3{
 article, aside{
     margin: 5px;
     padding: 5px;
-    border-radius: 10px;
-    border: solid 2px var(--secondary-colour);
+    @include rounded-box(10px, $secondary-colour);
 
-    background-color: var(--light-colour-2);
-    color: var(--dark-colour);
+    background-color: $light-colour-2;
+    color: $dark-colour;
 }
 aside{
-    border: solid 2px var(--main-colour);
+    border: solid 2px $main-colour;
 }
 
 article > h3, aside > h3{
@@ -126,23 +125,22 @@ button{
     height: 38px;
 	margin: 0px;
     padding: 2px 5px;
-    border: solid 2px var(--light-colour-2);
-    border-radius: 10px;
+    @include rounded-box(10px, $light-colour-2);
 
-    background-color: var(--dark-colour);
-    color: var(--light-colour-1);
-	font-size: 1.4em;
+    background-color: $dark-colour;
+    color: $light-colour-1;
+	/*font-size: 1.4em;*/
 	text-align: center;
     
     transition: transform 0.2s ease, color 0.2s ease;
 }
 button:hover, button:focus{
-    border: solid 2px var(--secondary-colour);
+    border: solid 2px $secondary-colour;
 
     outline: none;
 }
 button[class="disabled"]{
-    background-color: var(--disabled-colour);
+    background-color: $disabled-colour;
 
     cursor: not-allowed;
 }
@@ -173,12 +171,11 @@ button[class="disabled"]{
     top: -2px;
     left: 50%;
     z-index: 100;
-    border-radius: 10px;
-    border: solid 2px var(--secondary-colour);
+    @include rounded-box(10px, $secondary-colour);
     transform:translate(-50%, -100%);
 
-    background-color: var(--dark-colour);
-    color: var(--light-colour-1);
+    background-color: $dark-colour;
+    color: $light-colour-1;
     font-size: 16px;
     text-align: left;
 
@@ -199,8 +196,7 @@ button[class="disabled"]{
     height: 38px;
     margin: 0px 2px;
     padding: 10px 0px;
-    border: solid 2px var(--secondary-colour);
-    border-radius: 10px;
+    @include rounded-box(10px, $secondary-colour);
 
     text-align: center;
 }
@@ -241,14 +237,13 @@ button[class="disabled"]{
 
 #hint-message{
     padding: 5px;
-    border: solid 2px var(--main-colour);
+    border: solid 2px $main-colour;
     border-radius: 10px;
 }
 
 #guesses-tally{
     padding: 5px;
-    border: solid 2px var(--error-border-colour);
-    border-radius: 10px;
+    @include rounded-box(10px, var(--error-border-colour));
 }
 
 #keyboard{

@@ -1,6 +1,6 @@
 //SASS mxins
 
 @mixin rounded-box($rounded-corners, $border-color){
-    border-radius:$rounded-corners;    
-    border:3px solid $border-color;    
+    border-radius: $rounded-corners;    
+    border: solid 2px $border-color;    
 }
