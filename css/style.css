@@ -5,14 +5,6 @@ notes:	base sass scss
 */
 /* colours */
 /* fonts */
-:root {
-  /* colours */
-  --error-border-colour: #912034;
-  --error-bg-colour: #ce8391;
-  --good-border-colour: #116d34;
-  --good-bg-colour: #70bb8e;
-}
-
 /*! normalize.css v8.0.0 | MIT License | github.com/necolas/normalize.css */
 /* Document
    ========================================================================== */
@@ -417,7 +409,7 @@ html {
 
 body {
   background-color: #D7B62A;
-  color: #468570;
+  color: #201425;
   font-family: "Roboto", sans-serif;
 }
 
@@ -472,7 +464,7 @@ ol {
 header, footer {
   min-height: 20px;
   padding: 10px;
-  background-color: #a7a487;
+  background-color: #5C4D66;
   color: #F9F7F7;
   display: flex;
 }
@@ -495,14 +487,14 @@ footer > h3 {
 
 main {
   padding: 12px;
-  background-color: #252F24;
+  background-color: #201425;
 }
 
 section {
   margin: 7px;
   padding: 5px;
   border-radius: 10px;
-  background-color: #F9F7F7;
+  background-color: #2f9292;
   word-wrap: break-word;
   word-break: break-word;
 }
@@ -522,12 +514,12 @@ article, aside {
   padding: 5px;
   border-radius: 10px;
   border: solid 2px #D7B62A;
-  background-color: #a7a487;
-  color: #252F24;
+  background-color: #5C4D66;
+  color: #201425;
 }
 
 aside {
-  border: solid 2px #468570;
+  background-color: #2f9292;
 }
 
 article > h3, aside > h3 {
@@ -540,8 +532,8 @@ button {
   margin: 0px;
   padding: 2px 5px;
   border-radius: 10px;
-  border: solid 2px #a7a487;
-  background-color: #252F24;
+  border: solid 2px #5C4D66;
+  background-color: #201425;
   color: #F9F7F7;
   /*font-size: 1.4em;*/
   text-align: center;
@@ -556,18 +548,6 @@ button:hover, button:focus {
 button[class=disabled] {
   background-color: #5f5f5f;
   cursor: not-allowed;
-}
-
-.good-message {
-  border: solid 2px var(--good-border-colour);
-  background-color: var(--good-bg-colour);
-  color: var(--good-border-colour);
-}
-
-.error-message {
-  border: solid 2px var(--error-border-colour);
-  background-color: var(--error-bg-colour);
-  color: var(--error-border-colour);
 }
 
 .tooltip-anchor {
@@ -585,7 +565,7 @@ button[class=disabled] {
   border-radius: 10px;
   border: solid 2px #D7B62A;
   transform: translate(-50%, -100%);
-  background-color: #252F24;
+  background-color: #201425;
   color: #F9F7F7;
   font-size: 16px;
   text-align: left;
@@ -606,6 +586,7 @@ button[class=disabled] {
   padding: 10px 0px;
   border-radius: 10px;
   border: solid 2px #D7B62A;
+  background-color: #F9F7F7;
   text-align: center;
 }
 
@@ -633,7 +614,7 @@ button[class=disabled] {
   align-items: center;
 }
 
-#hint, #guesses, #buttons {
+#guesses-image, #hint, #guesses, #buttons {
   margin: 5px 0px;
   display: flex;
   justify-content: center;
@@ -641,14 +622,16 @@ button[class=disabled] {
 
 #hint-message {
   padding: 5px;
-  border: solid 2px #468570;
   border-radius: 10px;
+  border: solid 2px #201425;
+  background-color: #F9F7F7;
 }
 
 #guesses-tally {
   padding: 5px;
   border-radius: 10px;
-  border: solid 2px var(--error-border-colour);
+  border: solid 2px #912034;
+  background-color: #F9F7F7;
 }
 
 #keyboard {

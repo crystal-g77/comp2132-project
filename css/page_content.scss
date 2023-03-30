@@ -79,7 +79,7 @@ footer > h3{
 main{
     padding: 12px;
 
-    background-color: $dark-colour;
+    background-color: $main-colour;
 }
 
 section{
@@ -87,7 +87,7 @@ section{
     padding: 5px;
     border-radius: 10px;
 
-    background-color: $light-colour-1;
+    background-color: $bg-colour;
 
     word-wrap: break-word;
     word-break: break-word;
@@ -110,10 +110,10 @@ article, aside{
     @include rounded-box(10px, $secondary-colour);
 
     background-color: $light-colour-2;
-    color: $dark-colour;
+    color: $main-colour;
 }
 aside{
-    border: solid 2px $main-colour;
+    background-color: $bg-colour;
 }
 
 article > h3, aside > h3{
@@ -127,7 +127,7 @@ button{
     padding: 2px 5px;
     @include rounded-box(10px, $light-colour-2);
 
-    background-color: $dark-colour;
+    background-color: $main-colour;
     color: $light-colour-1;
 	/*font-size: 1.4em;*/
 	text-align: center;
@@ -145,20 +145,6 @@ button[class="disabled"]{
     cursor: not-allowed;
 }
 
-.good-message{
-    border: solid 2px var(--good-border-colour);
-
-    background-color: var(--good-bg-colour);
-    color: var(--good-border-colour);
-}
-
-.error-message{
-    border: solid 2px var(--error-border-colour);
-
-    background-color: var(--error-bg-colour);
-    color: var(--error-border-colour);
-}
-
 .tooltip-anchor{
     position: relative;
 }
@@ -174,7 +160,7 @@ button[class="disabled"]{
     @include rounded-box(10px, $secondary-colour);
     transform:translate(-50%, -100%);
 
-    background-color: $dark-colour;
+    background-color: $main-colour;
     color: $light-colour-1;
     font-size: 16px;
     text-align: left;
@@ -197,6 +183,8 @@ button[class="disabled"]{
     margin: 0px 2px;
     padding: 10px 0px;
     @include rounded-box(10px, $secondary-colour);
+
+    background-color: $light-colour-1;
 
     text-align: center;
 }
@@ -228,7 +216,7 @@ button[class="disabled"]{
     align-items: center;
 }
 
-#hint, #guesses, #buttons{
+#guesses-image, #hint, #guesses, #buttons{
     margin: 5px 0px;
 
     display: flex;
@@ -237,13 +225,16 @@ button[class="disabled"]{
 
 #hint-message{
     padding: 5px;
-    border: solid 2px $main-colour;
-    border-radius: 10px;
+    @include rounded-box(10px, $main-colour);
+
+    background-color: $light-colour-1;
 }
 
 #guesses-tally{
     padding: 5px;
-    @include rounded-box(10px, var(--error-border-colour));
+    @include rounded-box(10px, $dark-colour-1);
+
+    background-color: $light-colour-1;
 }
 
 #keyboard{

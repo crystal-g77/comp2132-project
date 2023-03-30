@@ -7,6 +7,7 @@ notes:	main javascript for final project
 const $popup                    = $("#popup");
 const popupMessage              = document.getElementById("popup-message");
 const playAgainBtn              = document.getElementById("play-again");
+const $guessesImg               = $("#guesses-image > img");
 const wordDiv                   = document.getElementById("word");
 const hintSpan                  = document.getElementById("hint-message");
 const guessesSpan               = document.getElementById("guesses-tally");
@@ -16,6 +17,9 @@ const keyboardDiv               = document.getElementById("keyboard");
 
 const popupFadeTime             = 700;
 let popupAnimating              = false;
+
+const guessesImgPath            = "images/garfield-eating";
+const guessesImgExt             = "png";
 
 let arrayOfLetterBtns           = [];
 
@@ -120,6 +124,7 @@ function newGame(){
     hintSpan.innerHTML = "Hint: " + currentWordObj.getHint();
 
     currentNumberOfGuesses = 0;
+    $guessesImg.attr("src", `${guessesImgPath}-${currentNumberOfGuesses}.${guessesImgExt}`);
     guessesSpan.innerHTML = `Incorrect Guesses: ${currentNumberOfGuesses}/${allowedNumberOfGuesses}`;
 
     // Reset all the letter buttons
@@ -154,7 +159,11 @@ function letterGuessed(){
         currentNumberOfGuesses++;
         guessesSpan.innerHTML = `Incorrect Guesses: ${currentNumberOfGuesses}/${allowedNumberOfGuesses}`;
         if(currentNumberOfGuesses >= allowedNumberOfGuesses){
+            $guessesImg.attr("src", `${guessesImgPath}-final.${guessesImgExt}`);
             showGameOverPopup(false);
+        }
+        else{
+            $guessesImg.attr("src", `${guessesImgPath}-${currentNumberOfGuesses}.${guessesImgExt}`);
         }
     }
 }
