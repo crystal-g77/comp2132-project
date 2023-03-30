@@ -5,6 +5,7 @@ notes:	main javascript for final project
 */
 
 const $popup                    = $("#popup");
+const $popupImg                 = $("#popup > img");
 const popupMessage              = document.getElementById("popup-message");
 const playAgainBtn              = document.getElementById("play-again");
 const $guessesImg               = $("#guesses-image > img");
@@ -84,9 +85,13 @@ function showGameOverPopup(won){
     if(!popupAnimating){
         $popup.css("display", "flex");
         if(won){
+            $popupImg.attr("src", "images/odie.png")
+            $popupImg.attr("alt", "Odie")
             popupMessage.innerHTML = "You won!"
         }
         else{
+            $popupImg.attr("src", "images/jon.png")
+            $popupImg.attr("alt", "Jon")
             popupMessage.innerHTML = `You lost...<br>The word was "${currentWordObj.getWord()}"`;
         }
         popupAnimating = true;
