@@ -472,6 +472,10 @@ header, footer {
 header {
   align-items: center;
 }
+header img {
+  width: 65px;
+  height: auto;
+}
 
 footer {
   justify-content: center;
@@ -545,7 +549,7 @@ button:hover, button:focus {
   outline: none;
 }
 
-button[class=disabled] {
+button[disabled] {
   background-color: #5f5f5f;
   cursor: not-allowed;
 }
@@ -636,21 +640,14 @@ button[class=disabled] {
 
 #keyboard {
   margin-top: 5px;
-  display: grid;
-  grid-template-columns: repeat(5, 1fr);
-  grid-gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+#keyboard button {
+  margin: 2px;
 }
 
-@media (min-width: 500px) {
-  #keyboard {
-    grid-template-columns: repeat(10, 1fr);
-  }
-}
-@media (min-width: 800px) {
-  #keyboard {
-    grid-template-columns: repeat(13, 1fr);
-  }
-}
 @media (min-width: 900px) {
   #wrapper {
     /* center content in wide viewport */

@@ -22,12 +22,24 @@ const jsonWordArray = `[
         "hint" : "a type of bird, also a baseball team"
     },
     {
+        "word" : ["j", "q", "u", "e", "r", "y"],
+        "hint" : "a fast, small, and feature-rich JavaScript library"
+    },
+    {
         "word" : ["f", "i", "z", "z"],
         "hint" : "the bubbles in a carbonated drink"
     },
     {
         "word" : ["j", "u", "n", "k"],
         "hint" : "a useless item"
+    },
+    {
+        "word" : ["c", "o", "f", "f", "e", "e"],
+        "hint" : "a caffeine fix"
+    },
+    {
+        "word" : ["d", "o", "m"],
+        "hint" : "the mechanism through which JavaScript can manipulate an HTML page"
     },
     {
         "word" : ["s", "h", "o", "r", "t"],

@@ -1,15 +1,15 @@
 //SASS widescreen layouts
 
 @media (min-width: 500px){
-    #keyboard{
-        grid-template-columns: repeat(10, 1fr);
-    }
+    // #keyboard{
+    //     grid-template-columns: repeat(10, 1fr);
+    // }
 }
 
 @media (min-width: 800px){
-    #keyboard{
-        grid-template-columns: repeat(13, 1fr);
-    }
+    // #keyboard{
+    //     grid-template-columns: repeat(13, 1fr);
+    // }
 }
 
 @media (min-width: 900px){

@@ -63,6 +63,11 @@ header, footer{
 }
 header{
     align-items: center;
+
+    img{
+        width: 65px;
+        height: auto;
+    }
 }
 footer{
     justify-content: center;
@@ -139,7 +144,7 @@ button:hover, button:focus{
 
     outline: none;
 }
-button[class="disabled"]{
+button[disabled]{
     background-color: $disabled-colour;
 
     cursor: not-allowed;
@@ -240,7 +245,14 @@ button[class="disabled"]{
 #keyboard{
     margin-top: 5px;
 
-    display: grid;
-    grid-template-columns: repeat(5, 1fr);
-    grid-gap: 5px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // display: grid;
+    // grid-template-columns: repeat(6, 1fr);
+    // grid-gap: 4px;
+
+    button{
+        margin: 2px;
+    }
 }

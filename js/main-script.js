@@ -19,6 +19,8 @@ const keyboardDiv               = document.getElementById("keyboard");
 const popupFadeTime             = 700;
 let popupAnimating              = false;
 
+let newGameHandlerId;
+
 const guessesImgPath            = "images/garfield-eating";
 const guessesImgExt             = "png";
 
@@ -42,9 +44,14 @@ for(let i = 0; i < arrayOfWords.length; i++){
 }
 
 playAgainBtn.addEventListener("click", function(e){
-    newGame();
+    if($popup.css("opacity") != 1){
+        //if the popup isn't fully showing don't do anything
+        return;
+    }
 
     hideGameOverPopup();
+
+    newGameHandlerId = setTimeout(newGame, popupFadeTime);
 });
 
 newGameBtn.addEventListener("click", function(e){
@@ -55,17 +62,18 @@ newGameBtn.addEventListener("click", function(e){
 
     newGame();
 });
-newGameBtn.addEventListener("mouseenter", function(e){
-    if($popup.css("opacity") > 0){
-        //if the popup is showing don't do anything
-        return;
-    }
 
-    newGameTooltip.style.display = "block";
-});
-newGameBtn.addEventListener("mouseleave", function(e){
-    newGameTooltip.style.display = "none";
-});
+// newGameBtn.addEventListener("mouseenter", function(e){
+//     if($popup.css("opacity") > 0){
+//         //if the popup is showing don't do anything
+//         return;
+//     }
+
+//     newGameTooltip.style.display = "block";
+// });
+// newGameBtn.addEventListener("mouseleave", function(e){
+//     newGameTooltip.style.display = "none";
+// });
 
 const alphabet = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", 
                     "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", 
@@ -83,7 +91,10 @@ newGame();
 
 function showGameOverPopup(won){
     if(!popupAnimating){
+        // Need to remember to change display away from none so that
+        // the popup actually shows
         $popup.css("display", "flex");
+        
         if(won){
             $popupImg.attr("src", "images/odie.png")
             $popupImg.attr("alt", "Odie")
@@ -94,6 +105,7 @@ function showGameOverPopup(won){
             $popupImg.attr("alt", "Jon")
             popupMessage.innerHTML = `You lost...<br>The word was "${currentWordObj.getWord()}"`;
         }
+
         popupAnimating = true;
         $popup.animate( {opacity : 1}, popupFadeTime, popupAnimationFinished);
     }
@@ -108,7 +120,10 @@ function hideGameOverPopup(){
 
 function popupAnimationFinished(){
     popupAnimating = false;
+
     if($popup.css("opacity") == 0){
+        // Need to change display to none when the animation is done so that 
+        // the "Play Again" button on the popup doesn't hijack clicks
         $popup.css("display", "none");
     }
 }
@@ -121,7 +136,7 @@ function newGame(){
     // Pick a new word
     const wordIndex = Math.floor(Math.random() * (arrayOfWordObj.length));
     currentWordObj = arrayOfWordObj[wordIndex];
-    console.log("newGame - Current word is " + currentWordObj.getWord());
+    console.log("newGame() - Current word is " + currentWordObj.getWord());
 
     wordDiv.innerHTML = "";
     wordDiv.appendChild(currentWordObj.buildHTMLObject());
@@ -135,21 +150,21 @@ function newGame(){
     // Reset all the letter buttons
     arrayOfLetterBtns.forEach(function(letterBtn){
         letterBtn.disabled = false;
-        letterBtn.classList.remove("disabled");
+        //letterBtn.classList.remove("disabled");
     });
 }
 
 function letterGuessed(){
     if($popup.css("opacity") > 0){
-        //if the popup is showing don't do anything
         return;
     }
 
     this.disabled = true;
-    this.classList.add("disabled");
     
     const guessedLetter = this.innerHTML;
     const found = currentWordObj.guessLetter(guessedLetter);
+
+    console.log(`letterGuessed() - Letter is ${guessedLetter}`)
 
     if(found){
         wordDiv.innerHTML = "";
