@@ -2,22 +2,313 @@
 /*
 author:	Crystal Giesbrecht
 date:	03/08/2023
-notes:	base sass scss
+notes:	sass styles
 */
-
-//import variable values
-@import "variables.scss";
-
-//import your mixins  
-@import "mixins.scss";
 
 //import resets
 @import "normalize.scss";
 @import "reset.scss";
 @import "box_reset.scss";
 
-//import content
-@import "page_content.scss";
+//SASS variables
 
-//import wide screen media query styles
-@import "widescreen_layout.scss";
+/* colours */
+$main-colour: #201425;
+$secondary-colour: #D7B62A;
+$bg-colour: #2f9292;
+$light-colour-1: #F9F7F7;
+$light-colour-2: #5C4D66;
+$dark-colour-1: #912034;
+$disabled-colour: #5f5f5f;
+
+/* fonts */
+$heading-font-family: 'Bree Serif';
+$body-font-family: 'Roboto';
+
+
+//SASS mixins
+
+@mixin rounded-box($rounded-corners, $border-color){
+    border-radius: $rounded-corners;    
+    border: solid 2px $border-color;    
+}
+//SASS main page content
+
+body{
+    background-color: $secondary-colour;
+	color: $main-colour;
+	font-family: $body-font-family, sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6{
+    font-family: $heading-font-family, serif;
+}
+h1{
+    margin: 0px;
+
+    font-weight: bold;
+}
+
+img{
+    max-width: 100%;
+    height: auto;
+}
+
+a{
+    background-color: transparent; 
+    outline: none;
+    text-decoration: none;
+    font-weight: bold;
+    line-height: 22px;
+}
+a:link, a:visited{
+    border-bottom: solid 2px $secondary-colour;
+
+    color: $secondary-colour;
+}
+a:hover, a:focus, a:active{
+    color: $light-colour-1;
+}
+
+p{
+    margin: 5px 0px;
+}
+
+ol, ul{
+    margin: 5px 0px;
+    padding-left: 20px;
+}
+ul{
+
+    list-style-type: disc;
+}
+ol{
+    list-style-type: upper-alpha;
+}
+
+header, footer{
+	min-height: 20px;
+    padding: 10px;
+
+    background-color: $light-colour-2;
+    color: $light-colour-1;
+    
+    display: flex;
+}
+header{
+    align-items: center;
+
+    img{
+        width: 65px;
+        height: auto;
+    }
+}
+footer{
+    justify-content: center;
+}
+
+header > h1{
+    padding: 5px;
+}
+
+footer > h3{
+    font-weight: bold;
+}
+
+main{
+    padding: 12px;
+
+    background-color: $main-colour;
+}
+
+section{
+    margin: 7px;
+    padding: 5px;
+    border-radius: 10px;
+
+    background-color: $bg-colour;
+
+    word-wrap: break-word;
+    word-break: break-word;
+}
+
+section > h2{
+    margin-bottom: 10px;
+
+    text-align: center;
+    font-weight: bold;
+}
+
+section > h3{
+    margin: 5px 0px;
+}
+
+article, aside{
+    margin: 5px;
+    padding: 5px;
+    @include rounded-box(10px, $secondary-colour);
+
+    background-color: $light-colour-2;
+    color: $main-colour;
+}
+aside{
+    color: $light-colour-1;
+}
+
+article > h3, aside > h3{
+    margin-bottom: 10px;
+}
+
+button{
+    min-width: 38px;
+    height: 38px;
+	margin: 0px;
+    padding: 2px 5px;
+    @include rounded-box(10px, $light-colour-2);
+
+    background-color: $main-colour;
+    color: $light-colour-1;
+	/*font-size: 1.4em;*/
+	text-align: center;
+    
+    transition: transform 0.2s ease, color 0.2s ease;
+}
+button:hover, button:focus{
+    border: solid 2px $secondary-colour;
+
+    outline: none;
+}
+button[disabled]{
+    background-color: $disabled-colour;
+
+    cursor: not-allowed;
+}
+
+.tooltip-anchor{
+    position: relative;
+}
+
+.tooltip{
+    width: 200px;    
+    margin: 0px;
+    padding: 5px;
+    position: absolute;
+    top: -2px;
+    left: 50%;
+    z-index: 100;
+    @include rounded-box(10px, $secondary-colour);
+    transform:translate(-50%, -100%);
+
+    background-color: $main-colour;
+    color: $light-colour-1;
+    font-size: 16px;
+    text-align: left;
+
+    display: none;
+}
+
+.word{
+    padding-left: 0px;
+
+    list-style-type: none;
+
+    display: flex;
+    justify-content: center;
+}
+
+.letter{
+    width: 38px;
+    height: 38px;
+    margin: 0px 2px;
+    padding: 10px 0px;
+    @include rounded-box(10px, $secondary-colour);
+
+    background-color: $light-colour-1;
+
+    text-align: center;
+}
+
+/* used to control the width and height of our web page */
+#wrapper{
+    min-height: 100vh;
+    min-width: 300px;
+    max-width: 900px;	
+    position: relative;
+
+    display: grid;
+    grid-template-rows: auto 1fr auto;
+}
+
+#popup{
+    width: 260px;
+    margin: 0px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    z-index: 100;
+    transform: translate(-50%, -50%);
+
+    opacity: 0;
+
+    display: none;
+    flex-direction: column;
+    align-items: center;
+}
+
+#guesses-image, #hint, #guesses, #buttons{
+    margin: 5px 0px;
+
+    display: flex;
+    justify-content: center;
+}
+
+#hint-message{
+    padding: 5px;
+    @include rounded-box(10px, $main-colour);
+
+    background-color: $light-colour-1;
+}
+
+#guesses-tally{
+    padding: 5px;
+    @include rounded-box(10px, $dark-colour-1);
+
+    background-color: $light-colour-1;
+}
+
+#keyboard{
+    margin-top: 5px;
+
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    // display: grid;
+    // grid-template-columns: repeat(6, 1fr);
+    // grid-gap: 4px;
+
+    button{
+        margin: 2px;
+    }
+}
+
+
+//SASS widescreen layouts
+
+@media (min-width: 500px){
+    // #keyboard{
+    //     grid-template-columns: repeat(10, 1fr);
+    // }
+}
+
+@media (min-width: 800px){
+    // #keyboard{
+    //     grid-template-columns: repeat(13, 1fr);
+    // }
+}
+
+@media (min-width: 900px){
+	#wrapper{
+		/* center content in wide viewport */
+		margin: auto;
+	}
+}
