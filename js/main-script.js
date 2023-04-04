@@ -4,7 +4,8 @@ date:	03/27/2023
 notes:	main javascript for final project
 */
 
-const $popup                    = $("#popup");
+//const $popup                    = $("#popup");
+const popup                     = document.getElementById("popup");
 const $popupImg                 = $("#popup > img");
 const popupMessage              = document.getElementById("popup-message");
 const playAgainBtn              = document.getElementById("play-again");
@@ -16,10 +17,11 @@ const newGameBtn                = document.getElementById("new-game");
 const newGameTooltip            = document.getElementById("new-game-tooltip");
 const keyboardDiv               = document.getElementById("keyboard");
 
-const popupFadeTime             = 700;
+//const popupFadeTime             = 700;
+const popupFadeInterval         = 0.05;
+const popupFadeIntervalTime     = 40;
 let popupAnimating              = false;
-
-let newGameHandlerId;
+let popupHandlerId;
 
 const guessesImgPath            = "images/garfield-eating";
 const guessesImgExt             = "png";
@@ -44,18 +46,18 @@ for(let i = 0; i < arrayOfWords.length; i++){
 }
 
 playAgainBtn.addEventListener("click", function(e){
-    if($popup.css("opacity") != 1){
+    //if($popup.css("opacity") != 1){
+    if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) != 1){
         //if the popup isn't fully showing don't do anything
         return;
     }
 
     hideGameOverPopup();
-
-    newGameHandlerId = setTimeout(newGame, popupFadeTime);
 });
 
 newGameBtn.addEventListener("click", function(e){
-    if($popup.css("opacity") > 0){
+    //if($popup.css("opacity") > 0){
+    if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) > 0){
         //if the popup is showing don't do anything
         return;
     }
@@ -91,9 +93,6 @@ newGame();
 
 function showGameOverPopup(won){
     if(!popupAnimating){
-        // Need to remember to change display away from none so that
-        // the popup actually shows
-        $popup.css("display", "flex");
         
         if(won){
             $popupImg.attr("src", "images/odie.png")
@@ -106,27 +105,55 @@ function showGameOverPopup(won){
             popupMessage.innerHTML = `You lost...<br>The word was "${currentWordObj.getWord()}"`;
         }
 
+        // Need to remember to change display away from none so that
+        // the popup actually shows
+        //$popup.css("display", "flex");
+        popup.style.display = "flex";
+
         popupAnimating = true;
-        $popup.animate( {opacity : 1}, popupFadeTime, popupAnimationFinished);
+        //$popup.animate( {opacity : 1}, popupFadeTime, popupAnimationFinished);
+        popupHandlerId = setInterval(function(){
+            let opacity = parseFloat(getComputedStyle(popup).getPropertyValue("opacity"));
+            opacity += popupFadeInterval;
+            popup.style.opacity = opacity;
+            if(opacity >= 1){
+                clearInterval(popupHandlerId);
+                popupAnimating = false;
+            }
+        }, popupFadeIntervalTime);
     }
 }
 
 function hideGameOverPopup(){
     if(!popupAnimating){
         popupAnimating = true;
-        $popup.animate( {opacity : 0}, popupFadeTime, popupAnimationFinished);
+        //$popup.animate( {opacity : 0}, popupFadeTime, popupAnimationFinished);
+        popupHandlerId = setInterval(function(){
+            let opacity = parseFloat(getComputedStyle(popup).getPropertyValue("opacity"));
+            opacity -= popupFadeInterval;
+            popup.style.opacity = opacity;
+            if(opacity <= 0){
+                clearInterval(popupHandlerId);
+                popupAnimating = false;
+                popup.style.display = "none";
+
+                newGame();
+            }
+        }, popupFadeIntervalTime);
     }
 }
 
-function popupAnimationFinished(){
-    popupAnimating = false;
+// function popupAnimationFinished(){
+//     popupAnimating = false;
 
-    if($popup.css("opacity") == 0){
-        // Need to change display to none when the animation is done so that 
-        // the "Play Again" button on the popup doesn't hijack clicks
-        $popup.css("display", "none");
-    }
-}
+//     if($popup.css("opacity") == 0){
+//         // Need to change display to none when the animation is done so that 
+//         // the "Play Again" button on the popup doesn't hijack clicks
+//         $popup.css("display", "none");
+
+//         newGame();
+//     }
+// }
 
 function newGame(){
     if(currentWordObj){
@@ -150,12 +177,12 @@ function newGame(){
     // Reset all the letter buttons
     arrayOfLetterBtns.forEach(function(letterBtn){
         letterBtn.disabled = false;
-        //letterBtn.classList.remove("disabled");
     });
 }
 
 function letterGuessed(){
-    if($popup.css("opacity") > 0){
+    //if($popup.css("opacity") > 0){
+    if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) > 0){
         return;
     }
 
