@@ -4,7 +4,7 @@ date:	03/27/2023
 notes:	main javascript for final project
 */
 
-//const $popup                    = $("#popup");
+// const $popup                    = $("#popup");
 const popup                     = document.getElementById("popup");
 const $popupImg                 = $("#popup > img");
 const popupMessage              = document.getElementById("popup-message");
@@ -17,7 +17,7 @@ const newGameBtn                = document.getElementById("new-game");
 const newGameTooltip            = document.getElementById("new-game-tooltip");
 const keyboardDiv               = document.getElementById("keyboard");
 
-//const popupFadeTime             = 700;
+// const popupFadeTime             = 700;
 const popupFadeInterval         = 0.05;
 const popupFadeIntervalTime     = 40;
 let popupAnimating              = false;
@@ -46,19 +46,21 @@ for(let i = 0; i < arrayOfWords.length; i++){
 }
 
 playAgainBtn.addEventListener("click", function(e){
-    //if($popup.css("opacity") != 1){
+    // if($popup.css("opacity") != 1){
     if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) != 1){
-        //if the popup isn't fully showing don't do anything
+        // if the popup isn't fully showing don't do anything
         return;
     }
 
     hideGameOverPopup();
 });
 
+// this button was just for testing 
+newGameBtn.style.display = "none";
 newGameBtn.addEventListener("click", function(e){
-    //if($popup.css("opacity") > 0){
+    // if($popup.css("opacity") > 0){
     if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) > 0){
-        //if the popup is showing don't do anything
+        // if the popup is showing don't do anything
         return;
     }
 
@@ -67,7 +69,7 @@ newGameBtn.addEventListener("click", function(e){
 
 // newGameBtn.addEventListener("mouseenter", function(e){
 //     if($popup.css("opacity") > 0){
-//         //if the popup is showing don't do anything
+//         // if the popup is showing don't do anything
 //         return;
 //     }
 
@@ -107,11 +109,11 @@ function showGameOverPopup(won){
 
         // Need to remember to change display away from none so that
         // the popup actually shows
-        //$popup.css("display", "flex");
+        // $popup.css("display", "flex");
         popup.style.display = "flex";
 
         popupAnimating = true;
-        //$popup.animate( {opacity : 1}, popupFadeTime, popupAnimationFinished);
+        // $popup.animate( {opacity : 1}, popupFadeTime, popupAnimationFinished);
         popupHandlerId = setInterval(function(){
             let opacity = parseFloat(getComputedStyle(popup).getPropertyValue("opacity"));
             opacity += popupFadeInterval;
@@ -127,7 +129,7 @@ function showGameOverPopup(won){
 function hideGameOverPopup(){
     if(!popupAnimating){
         popupAnimating = true;
-        //$popup.animate( {opacity : 0}, popupFadeTime, popupAnimationFinished);
+        // $popup.animate( {opacity : 0}, popupFadeTime, popupAnimationFinished);
         popupHandlerId = setInterval(function(){
             let opacity = parseFloat(getComputedStyle(popup).getPropertyValue("opacity"));
             opacity -= popupFadeInterval;
@@ -181,7 +183,7 @@ function newGame(){
 }
 
 function letterGuessed(){
-    //if($popup.css("opacity") > 0){
+    // if($popup.css("opacity") > 0){
     if(parseFloat(getComputedStyle(popup).getPropertyValue("opacity")) > 0){
         return;
     }
