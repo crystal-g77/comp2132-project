@@ -89,7 +89,7 @@ class Word{
         let found = false;
 
         for(let i = 0; i < this.word.length; i++){
-            if(letter == this.word[i]){
+            if(letter.toLowerCase() === this.word[i].toLowerCase()){
                 this.guessed[i] = true;
                 found = true;
             }
